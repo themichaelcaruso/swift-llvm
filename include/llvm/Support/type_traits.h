@@ -34,7 +34,8 @@ struct isPodLike {
   // std::is_trivially_copyable.
   // If we don't know anything else, we can (at least) assume that all non-class
   // types are PODs.
-  static const bool value = !std::is_class<T>::value;
+  static const bool value = __is_trivially_copyable(T);
+  //static const bool value = !std::is_class<T>::value;
 };
 
 // std::pair's are pod-like if their elements are.
